@@ -28,13 +28,11 @@ $(BUILD_DIR)/main.o: $(SRC_DIR)/main.cpp
 	$(CXX) -c $(CXXFLAGS) $^ -o $@
 
 
-main.exe: $(BUILD_DIR)/main.o
+main: $(BUILD_DIR)/main.o
 	$(CXX) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $(BUILD_DIR)/$@
 
-main: main.exe
-
-run:
-	$(BUILD_DIR)/main.exe
+run: main
+	$(BUILD_DIR)/main
 
 clean:
 ifneq (,$(wildcard $(BUILD_DIR)/*))
