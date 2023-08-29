@@ -16,27 +16,29 @@ else
     endif
 endif
 
-
-build_dir:
-ifeq (,$(wildcard $(BUILD_DIR)))
+init: ../build
+../build:
 	mkdir $(BUILD_DIR)
-endif
 
-compile: build_dir $(SRC_DIR)/main.cpp
+$(SRC_DIR)/%.c:
+	echo $@ not found
 
-$(BUILD_DIR)/main.o: $(SRC_DIR)/main.cpp
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c*
 	$(CXX) -c $(CXXFLAGS) $^ -o $@
 
+$(BUILD_DIR)/%: $(BUILD_DIR)/%.o
+	$(CXX) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
-main: $(BUILD_DIR)/main.o
-	$(CXX) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $(BUILD_DIR)/$@
+main: $(BUILD_DIR)/main
+hello: $(BUILD_DIR)/hello
 
 run: main
 	$(BUILD_DIR)/main
+
 
 clean:
 ifneq (,$(wildcard $(BUILD_DIR)/*))
 	rm -r $(BUILD_DIR)/*
 endif
 
-all: clean main run
+all: main run
