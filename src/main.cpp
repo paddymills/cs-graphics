@@ -25,12 +25,6 @@ void display()
     glEnd();
 
     glBegin(GL_TRIANGLE_STRIP);
-        glColor3f(
-            from_rgb_val(229),
-            from_rgb_val(233),
-            from_rgb_val(240)
-        );
-
         glVertex2f(-0.5,  -0.2);
         glVertex2f( 0.5,  -0.2);
         glVertex2f( 0.0,  -0.5);
@@ -48,10 +42,11 @@ void init()
         0.0
     );
     glColor3f(
-        from_rgb_val(208),
-        from_rgb_val(135),
-        from_rgb_val(112)
+        from_rgb_val(229),
+        from_rgb_val(233),
+        from_rgb_val(240)
     );
+
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
