@@ -1,7 +1,7 @@
 /*
-Name: <YOUR NAME>
-Student ID: <STUDENT ID>
-Email: <YOUR EMAIL>
+Name: Patrick Miller
+Student ID: pjm6196
+Email: pjm6196@psu.edu
 
 Please write what this program does or also mention what doesn't work .
 
@@ -15,7 +15,7 @@ Status:
 
 #include <GL/glut.h>
 #include <vector>
-#include<iostream>
+#include <iostream>
 
 
 using namespace std;
@@ -25,39 +25,33 @@ int WINDOW_HEIGHT = 800;
 bool g_bDragging = true;
 
 // MOUSE Function
-void mouse(int button, int state, int x, int y)
-{
+void mouse(int button, int state, int x, int y) {
 	
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
-	{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) 	{
 		//When your mouse dragging this function is working
 		
 
 	}
-	if (button == GLUT_LEFT_BUTTON && state == GLUT_UP)
-	{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) 	{
 		// When you release your mouse left button
 		
 
 	}
-	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
-	{
+	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) 	{
 		// When you want to finish your polygon creation
 
 	}
 
 }
 
-void display()
-{
+void display() {
 	// Create your LINES for polygon 
 	printf("Display function");
 	
 
 }
 
-void OnReshape(int w, int h)
-{
+void OnReshape(int w, int h) {
 	printf("Reshape");
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);
 	glMatrixMode(GL_PROJECTION);
@@ -68,8 +62,7 @@ void OnReshape(int w, int h)
 	glutPostRedisplay();
 }
 
-void Init(void)
-{
+void Init(void) {
 	printf("init");
 	glClearColor(1.0, 1.0, 1.0, 1.0);
 	glPointSize(5.0);
@@ -81,18 +74,15 @@ void Init(void)
 
 
 
-void OnMouseMove(int mouse_x, int mouse_y)
-{
-	if (g_bDragging)
-	{
+void OnMouseMove(int mouse_x, int mouse_y) {
+	if (g_bDragging) 	{
 		// When you drag, create a line from the last point
 		printf("dragging");
 		
 	}
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA);
 	glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
