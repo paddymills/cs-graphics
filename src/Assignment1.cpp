@@ -11,18 +11,25 @@ Status:
 
 */
 
-
-
 #include <GL/glut.h>
 #include <vector>
 #include <iostream>
 
 
 using namespace std;
+
 int WINDOW_WIDTH = 800;
 int WINDOW_HEIGHT = 800;
 
 bool g_bDragging = true;
+
+struct Polygon {
+	vector<double> xvals;
+	vector<double> yvals;
+};
+
+vector<struct Polygon> polygons;
+vector<double> points;
 
 // MOUSE Function
 void mouse(int button, int state, int x, int y) {
@@ -30,16 +37,17 @@ void mouse(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) 	{
 		//When your mouse dragging this function is working
 		
-
+		// TODO: draw line from last point to cursor
 	}
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) 	{
 		// When you release your mouse left button
 		
-
+		// TODO: add point to current creating polygon
 	}
 	if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) 	{
 		// When you want to finish your polygon creation
 
+		// TODO: finalize & paint polygon
 	}
 
 }
