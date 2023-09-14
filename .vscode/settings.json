@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.n": "gcode",
+        "*.ready": "tsv",
+        "*.cm": "cpp",
+        "*.reading": "tsv",
+        "*.outbound.archive": "tsv",
+        "vector": "cpp"
+    }
+}
