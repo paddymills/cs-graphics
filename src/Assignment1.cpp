@@ -52,6 +52,29 @@ void mouse(int button, int state, int x, int y) {
 
 }
 
+void kbd(unsigned char key, int x, int y) {
+	switch (key) {
+	case 'r':
+		// TODO: fill last polygon with red
+		break;
+	case 'g':
+		// TODO: fill last polygon with green
+		break;
+	case 't':
+		// TODO: fill last polygon with no color
+		break;
+	case 'c':
+		// TODO: clear the screen
+		break;
+	case 'q':
+		// TODO: exit application
+		break;
+	
+	default:
+		break;
+	}
+}
+
 void display() {
 	// Create your LINES for polygon 
 	printf("Display function");
@@ -98,6 +121,7 @@ int main(int argc, char** argv) {
 	glutCreateWindow("Polygon Creation using mouse");
 	Init();
 	glutMouseFunc(mouse);
+	glutKeyboardFunc(kbd);
 	glutMotionFunc(OnMouseMove);
 	glutDisplayFunc(display);
 	glutReshapeFunc(OnReshape);
