@@ -4,11 +4,11 @@ LDLIBS = -L"$(CURDIR)/lib"
 LOADLIBES =
 
 ifeq ($(OS),Windows_NT)
-    LOADLIBES = -lfreeglut -lopengl32 -lGlu32 -W"l,--subsystem,windows"
+    LOADLIBES += -lfreeglut -lopengl32 -lGlu32 -W"l,--subsystem,windows" -lglew32
 else
     UNAME_S := $(shell uname -s)
     ifeq ($(UNAME_S),Linux)
-        LOADLIBES = -lglut -lGL -lGLU
+        LOADLIBES += -lglut -lGL -lGLU -lGLEW
     endif
 endif
 
