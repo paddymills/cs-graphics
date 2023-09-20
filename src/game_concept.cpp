@@ -13,6 +13,13 @@ GLfloat characterY = -0.65f; // Character's Y position
 GLfloat characterVelocityX = 0.0f;
 GLfloat characterVelocityY = 0.0f;
 bool isJumping = false;
+
+GLfloat objectX = -0.8f; // Character's X position
+GLfloat objectY = -0.65f; // Character's Y position
+GLfloat objectVelocityX = 0.0f;
+GLfloat objectVelocityY = 0.0f;
+bool isFired;
+
 GLfloat gravity = -0.001f;
 
 void init() {
@@ -110,6 +117,27 @@ void display() {
 
     glEnd();
 
+    
+    // Draw the object texture
+    if (isFired) {
+        glBindTexture(GL_TEXTURE_2D, characterTexture);
+        glBegin(GL_QUADS);
+
+            glTexCoord2f(0.0f, 1.0f);
+            glVertex2f(objectX, objectY);
+
+            glTexCoord2f(1.0f, 1.0f);
+            glVertex2f(objectX + 0.1f, objectY);
+
+            glTexCoord2f(1.0f, 0.0f);
+            glVertex2f(objectX + 0.1f, objectY + 0.1f);
+
+            glTexCoord2f(0.0f, 0.0f);
+            glVertex2f(objectX, objectY + 0.1f);
+
+        glEnd();
+    }
+
     glDisable(GL_TEXTURE_2D);
 
     glutSwapBuffers();
@@ -124,6 +152,17 @@ void keyboard(unsigned char key, int x, int y) {
     case 'd':
     case 'D':
         characterVelocityX = 0.01f;
+        break;
+    case 'f':
+    case 'F':
+        if (!isFired) {
+            objectX = characterX;
+            objectY = characterY;
+
+            objectVelocityX = 0.01f;
+            objectVelocityY = 0.02f;
+            isFired = true;
+        }
         break;
     case ' ':
         if (!isJumping) {
@@ -157,6 +196,21 @@ void update(int value) {
             characterVelocityY = 0.0f;
             isJumping = false;
         }
+    }
+
+    if (isFired) {
+        objectX += objectVelocityX;
+        objectY += objectVelocityY;
+        objectVelocityY += gravity;
+
+        // Check for ground
+        if (objectY < -0.65f) {
+            objectY = -0.65f;
+            objectVelocityY = 0.01f;
+        }
+
+        if (objectX > 1 || objectY > 1)
+            isFired = false;
     }
 
     glutPostRedisplay();
