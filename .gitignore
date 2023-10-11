@@ -35,4 +35,5 @@ build/
 # temp libraries from canvas
 libraries/
 
+# include libraries
 !lib/*
